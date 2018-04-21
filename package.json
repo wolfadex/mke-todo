@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
+  "homepage": "https://wolfadex.github.io/mke-todo",
   "scripts": {
     "start": "react-static start",
     "stage": "react-static build --staging",
