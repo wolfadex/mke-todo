@@ -16,28 +16,6 @@ class App extends Component {
     showAdd: false,
   }
 
-  componentDidMount () {
-    window.addEventListener('keydown', this.stopAdding)
-  }
-
-  componentWillUnmount () {
-    window.removeEventListener('keydown', this.stopAdding)
-  }
-
-  stopAdding = e => {
-    if (e.keyCode === 27) {
-      this.setState({
-        showAdd: false,
-      })
-    }
-  }
-
-  showAdd = () => {
-    this.setState({
-      showAdd: true,
-    })
-  }
-
   handleAdd = newItem => {
     this.setState(({ list }) => ({
       list: [...list, { text: newItem, done: false }],
@@ -102,9 +80,6 @@ class App extends Component {
               return (
                 <AddButton
                   className={colors}
-                  onClick={this.showAdd}
-                  onKeyDown={ifKeyThen(this.showAdd)}
-                  showAdd={showAdd}
                   onDone={this.handleAdd}
                 />
               )
