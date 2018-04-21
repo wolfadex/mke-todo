@@ -62,9 +62,10 @@ export default class AddButton extends Component {
       this.setState({
         nextItem: '',
       })
-      this.props.onDone(this.state.nextItem)
-    } else {
-      console.log(e.keyCode)
+
+      if (this.state.nextItem) {
+        this.props.onDone(this.state.nextItem)
+      }
     }
   }
 

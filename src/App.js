@@ -4,51 +4,96 @@ import './app.css'
 import AddButton from './AddButton'
 import ToggleButton from './ToggleButton'
 
+const localStorageKey = 'wolfadex-mke-todo'
+
 const ifKeyThen = next => e => {
   if (e.keyCode === 13 || e.keyCode === 32) {
     next(e)
   }
 }
 
+const saveLocally = list => {
+  window.localStorage.setItem(localStorageKey, JSON.stringify(list))
+}
+
 class App extends Component {
-  state = {
-    list: [],
-    showAdd: false,
+  constructor (props) {
+    super(props)
+
+    let storedList = window.localStorage.getItem(localStorageKey)
+
+    if (storedList) {
+      try {
+        storedList = JSON.parse(storedList)
+
+        this.state = {
+          list: storedList,
+          showAdd: false,
+        }
+      } catch (e) {
+        this.state = {
+          list: [],
+          showAdd: false,
+        }
+      }
+    } else {
+      this.state = {
+        list: [],
+        showAdd: false,
+      }
+    }
   }
 
   handleAdd = newItem => {
-    this.setState(({ list }) => ({
-      list: [...list, { text: newItem, done: false }],
-      showAdd: false,
-    }))
+    this.setState(({ list }) => {
+      const newList = [...list, { text: newItem, done: false }]
+
+      saveLocally(newList)
+
+      return {
+        list: newList,
+        showAdd: false,
+      }
+    })
   }
 
   toggleDone = i => () => {
-    this.setState(({ list }) => ({
-      list: [
+    this.setState(({ list }) => {
+      const newList = [
         ...list.slice(0, i),
         {
           ...list[i],
           done: !list[i].done,
         },
         ...list.slice(i + 1),
-      ],
-    }))
+      ]
+
+      saveLocally(newList)
+
+      return {
+        list: newList,
+      }
+    })
   }
 
   handleDelete = i => () => {
-    this.setState(({ list }) => ({
-      list: [
+    this.setState(({ list }) => {
+      const newList = [
         ...list.slice(0, i),
         ...list.slice(i + 1),
-      ],
-    }))
+      ]
+
+      saveLocally(newList)
+
+      return {
+        list: newList,
+      }
+    })
   }
 
   render () {
     const {
       list,
-      showAdd,
     } = this.state
     const fullList = [...list]
 
