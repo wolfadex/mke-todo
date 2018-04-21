@@ -1,0 +1,169 @@
+.app {
+  /* position: absolute; */
+}
+
+input[type=text] {
+  font-size: 1.5rem;
+  border: none;
+  text-align: center;
+  width: 22rem;
+}
+
+.national-flag-blue {
+  background-color: rgb(13, 34, 64);
+  color: rgb(0, 168, 225);
+}
+
+.national-flag-blue input[type=text] {
+  background-color: rgb(0, 168, 225);
+  color: rgb(13, 34, 64);
+}
+
+.process-blue {
+  background-color: rgb(0, 168, 225);
+  color: rgb(13, 34, 64);
+}
+
+.process-blue input[type=text] {
+  background-color: rgb(13, 34, 64);
+  color: rgb(0, 168, 225);
+}
+
+.mustard {
+  background-color: rgb(247, 168, 0);
+}
+
+.white {
+  background-color: rgb(255, 255, 255);
+}
+
+body {
+  background-color: rgb(13, 34, 64);
+  font-family: sans-serif;
+}
+
+.circle-top {
+  border-top-left-radius: 100rem;
+  border-top-right-radius: 100rem;
+  height: 14rem;
+  width: 28rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+
+.circle-bottom {
+  border-bottom-left-radius: 100rem;
+  border-bottom-right-radius: 100rem;
+  height: 14rem;
+  width: 28rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+}
+
+.end-row {
+  /* height: 2rem; */
+  flex: 1;
+}
+
+header {
+  height: 20rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+ul {
+  width: 28rem;
+  padding: 0;
+  margin: auto;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  border-bottom-left-radius: 100rem;
+  border-bottom-right-radius: 100rem;
+  min-height: 14rem;
+}
+
+li {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  flex: 1;
+  height: 2.8rem;
+  text-overflow: ellipsis;
+}
+
+li .done-button {
+  cursor: pointer;
+  margin-left: 2rem;
+}
+
+li .list-item {
+  flex: 1;
+  text-align: center;
+}
+
+li .delete-button {
+  cursor: pointer;
+  margin-right: 2rem;
+}
+
+.button:focus {
+  color: white;
+  outline: none;
+}
+.button:hover {
+  color: white;
+  outline: none;
+}
+.button:active {
+  color: white;
+  outline: none;
+}
+
+.add-button {
+  cursor: pointer;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.toggle-outer {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle-outer:focus {
+  outline: none;
+  background-color: white;
+}
+.toggle-outer:hover {
+  outline: none;
+  background-color: white;
+}
+.toggle-outer:active {
+  outline: none;
+  background-color: white;
+}
+
+.toggle-inner {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 1rem;
+  background-color: rgb(247, 168, 0);
+}
