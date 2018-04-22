@@ -13,34 +13,33 @@ const ifKeyThen = next => e => {
 }
 
 const saveLocally = list => {
-  window.localStorage.setItem(localStorageKey, JSON.stringify(list))
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem(localStorageKey, JSON.stringify(list))
+  }
 }
 
 class App extends Component {
   constructor (props) {
     super(props)
 
-    let storedList = window.localStorage.getItem(localStorageKey)
+    let storedList = []
 
-    if (storedList) {
+    if (typeof window !== 'undefined') {
       try {
-        storedList = JSON.parse(storedList)
+        storedList = window.localStorage.getItem(localStorageKey)
 
-        this.state = {
-          list: storedList,
-          showAdd: false,
+        if (storedList) {
+          storedList = JSON.parse(storedList)
+        } else {
+          storedList = []
         }
       } catch (e) {
-        this.state = {
-          list: [],
-          showAdd: false,
-        }
+        storedList = []
       }
-    } else {
-      this.state = {
-        list: [],
-        showAdd: false,
-      }
+    }
+
+    this.state = {
+      list: storedList,
     }
   }
 
